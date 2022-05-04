@@ -6,6 +6,11 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
+  fragment imgData on UploadFile {
+    alternativeText
+    url
+  }
+
   fragment header on LandingPage {
     header {
       titulo
@@ -15,8 +20,39 @@ const GET_LANDING_PAGE = /* GraphQL */ `
         url
       }
       image {
-        alternativeText
-        url
+        ...imgData
+      }
+    }
+  }
+
+  fragment intro on LandingPage {
+    sectionIntro {
+      title
+      text
+      image {
+        ...imgData
+      }
+    }
+  }
+
+  fragment tech on LandingPage {
+    sectionTech {
+      title
+      techs {
+        title
+        image {
+          ...imgData
+        }
+      }
+    }
+  }
+
+  fragment course on LandingPage {
+    sectionCourse {
+      title
+      courses {
+        id
+        description
       }
     }
   }
@@ -25,6 +61,9 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     landingPage {
       ...logo
       ...header
+      ...intro
+      ...tech
+      ...course
     }
   }
 `

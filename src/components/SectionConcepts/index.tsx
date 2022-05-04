@@ -3,16 +3,16 @@ import React from 'react'
 import Container from 'components/Container'
 import Heading from 'components/Heading'
 
-import content from './content'
 import * as S from './styles'
+import { CourseProps } from 'types/api'
 
-const SectionConcepts = () => (
+const SectionConcepts = ({ title, courses }: CourseProps) => (
   <Container>
     <S.Box>
-      <Heading lineBottom>Conceitos que você irá aprender</Heading>
+      <Heading lineBottom>{title}</Heading>
       <S.List>
-        {content.map((item) => (
-          <S.Item key={item}>{item}</S.Item>
+        {courses.map(({ id, description }) => (
+          <S.Item key={id}>{description}</S.Item>
         ))}
       </S.List>
     </S.Box>
