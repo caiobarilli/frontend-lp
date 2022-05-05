@@ -24,7 +24,7 @@ const SectionHero = ({ logo, header }: Props) => (
 
       <S.Content>
         <S.TextBlock>
-          <S.Title>{header.titulo}</S.Title>
+          <S.Title>{header.title}</S.Title>
           <S.Description>{header.subtitle}</S.Description>
           <S.ButtonWrapper>
             <Button href={header.button.url} onClick={onClick} wide>
