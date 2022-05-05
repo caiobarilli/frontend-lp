@@ -4,7 +4,7 @@ export type LogoProps = {
 }
 
 export type HeaderProps = {
-  titulo: string
+  title: string
   subtitle: string
   button: {
     title: string
@@ -37,13 +37,40 @@ export type TechProps = {
   techs: TechIcons[]
 }
 
-export type CourseList = {
+export type CourseListProps = {
   id: number
   description: string
 }
 export type CourseProps = {
   title: string
-  courses: CourseList[]
+  courses: CourseListProps[]
+}
+
+export type ModulesListProps = {
+  id: number
+  title: string
+  subtitle: string
+  description: string
+}
+export type ModulesProps = {
+  title: string
+  modules: ModulesListProps[]
+}
+
+export type CardsListProps = {
+  id: number
+  fullPrice: number
+  parcels: number
+  parcelPrice: number
+  price: number
+  content: string
+  ButtonUrl: string
+  ButtonText: string
+}
+export type AboutProps = {
+  title: string
+  text: string
+  cardPlans: CardsListProps[]
 }
 
 export type LandingPageProps = {
@@ -52,4 +79,6 @@ export type LandingPageProps = {
   sectionIntro: IntroProps
   sectionTech: TechProps
   sectionCourse: CourseProps
+  sectionModule: ModulesProps
+  sectionAbout: AboutProps
 }

@@ -13,7 +13,7 @@ const GET_LANDING_PAGE = /* GraphQL */ `
 
   fragment header on LandingPage {
     header {
-      titulo
+      title
       subtitle
       button {
         title
@@ -57,6 +57,35 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
+  fragment modules on LandingPage {
+    sectionModule {
+      title
+      modules {
+        id
+        title
+        subtitle
+        description
+      }
+    }
+  }
+
+  fragment about on LandingPage {
+    sectionAbout {
+      title
+      text
+      cardPlans {
+        id
+        fullPrice
+        parcels
+        parcelPrice
+        price
+        content
+        ButtonUrl
+        ButtonText
+      }
+    }
+  }
+
   query GET_LANDING_PAGE {
     landingPage {
       ...logo
@@ -64,6 +93,8 @@ const GET_LANDING_PAGE = /* GraphQL */ `
       ...intro
       ...tech
       ...course
+      ...modules
+      ...about
     }
   }
 `
