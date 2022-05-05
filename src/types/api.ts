@@ -94,6 +94,32 @@ export type TeamProps = {
   authors: AuthorProps[]
 }
 
+export type ReviewListProps = {
+  id: number
+  photo: {
+    alternativeText: string
+    url: string
+  }
+  fullname: string
+  description: string
+}
+export type ReviewsProps = {
+  id: number
+  title: string
+  reviews: ReviewListProps[]
+}
+
+export type QuestionsProps = {
+  id: number
+  title: string
+  description: string
+}
+export type FaqProps = {
+  id: number
+  title: string
+  questions: QuestionsProps[]
+}
+
 export type LandingPageProps = {
   logo: LogoProps
   header: HeaderProps
@@ -103,4 +129,6 @@ export type LandingPageProps = {
   sectionModule: ModulesProps
   sectionAbout: AboutProps
   sectionTeam: TeamProps
+  sectionReview: ReviewsProps
+  sectionFaq: FaqProps
 }

@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
+import { getImageUrl } from 'utils/getImageUrl'
 
 import * as S from './styles'
 
 type Props = {
   id: number
-  name: string
-  image: string
+  fullname: string
+  photo: string
   description: string
 }
 
-const ReviewCard: React.FC<Props> = ({ id, name, image, description }) => {
+const ReviewCard: React.FC<Props> = ({ id, fullname, photo, description }) => {
   useEffect(() => {
     const texts = document.querySelectorAll('p.description')
 
@@ -31,21 +32,41 @@ const ReviewCard: React.FC<Props> = ({ id, name, image, description }) => {
     <S.Card>
       <S.User>
         <S.Image>
-          <source
-            srcSet={require(`@images/reviews/${image}?webp`)}
-            type="image/webp"
-          />
-          <source
-            srcSet={require(`@images/reviews/${image}`)}
-            type="image/jpg"
-          />
-          <img
-            src={require(`@images/reviews/${image}`)}
-            loading="lazy"
-            alt={name}
-          />
+          {photo !== null ? (
+            <>
+              <source srcSet={getImageUrl(`${photo}?webp`)} type="image/webp" />
+              <source srcSet={getImageUrl(`${photo}`)} type="image/jpg" />
+              <img
+                src={getImageUrl(`${photo}`)}
+                loading="lazy"
+                alt={fullname}
+              />
+            </>
+          ) : (
+            <>
+              <source
+                srcSet={getImageUrl(
+                  `/uploads/thumbnail_reviewer_17f000c1cd_cc817e5369.jpeg?webp`
+                )}
+                type="image/webp"
+              />
+              <source
+                srcSet={getImageUrl(
+                  `/uploads/thumbnail_reviewer_17f000c1cd_cc817e5369.jpeg`
+                )}
+                type="image/jpg"
+              />
+              <img
+                src={getImageUrl(
+                  `/uploads/thumbnail_reviewer_17f000c1cd_cc817e5369.jpeg`
+                )}
+                loading="lazy"
+                alt={fullname}
+              />
+            </>
+          )}
         </S.Image>
-        <S.Name>{name}</S.Name>
+        <S.Name>{fullname}</S.Name>
       </S.User>
       <S.Text>
         <input type="checkbox" id={`review-${id}`} />

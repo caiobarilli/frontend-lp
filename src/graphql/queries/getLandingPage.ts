@@ -109,6 +109,33 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
+  fragment reviews on LandingPage {
+    sectionReview {
+      id
+      title
+      reviews {
+        id
+        photo {
+          ...imgData
+        }
+        fullname
+        description
+      }
+    }
+  }
+
+  fragment faq on LandingPage {
+    sectionFaq {
+      id
+      title
+      questions {
+        id
+        title
+        description
+      }
+    }
+  }
+
   query GET_LANDING_PAGE {
     landingPage {
       ...logo
@@ -119,6 +146,8 @@ const GET_LANDING_PAGE = /* GraphQL */ `
       ...modules
       ...about
       ...team
+      ...reviews
+      ...faq
     }
   }
 `

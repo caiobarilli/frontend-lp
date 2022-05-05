@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { GrGithub } from 'react-icons/gr'
-import { FaDribbble, FaTwitter } from 'react-icons/fa'
+import { FaDribbble, FaTwitter, FaFacebook } from 'react-icons/fa'
 
 import * as S from './styles'
 import { getImageUrl } from 'utils/getImageUrl'
@@ -9,6 +9,7 @@ import { getImageUrl } from 'utils/getImageUrl'
 const icons = {
   twitter: <FaTwitter />,
   github: <GrGithub />,
+  facebook: <FaFacebook />,
   dribbble: <FaDribbble />
 }
 
