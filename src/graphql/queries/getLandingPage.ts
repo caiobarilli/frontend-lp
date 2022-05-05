@@ -74,7 +74,6 @@ const GET_LANDING_PAGE = /* GraphQL */ `
       title
       text
       cardPlans {
-        id
         fullPrice
         parcels
         parcelPrice
@@ -82,6 +81,30 @@ const GET_LANDING_PAGE = /* GraphQL */ `
         content
         ButtonUrl
         ButtonText
+      }
+    }
+  }
+
+  fragment authorData on Author {
+    id
+    photo {
+      ...imgData
+    }
+    fullName
+    role
+    description
+    socialNetworks {
+      id
+      url
+      socialNetwork
+    }
+  }
+
+  fragment team on LandingPage {
+    sectionTeam {
+      title
+      authors {
+        ...authorData
       }
     }
   }
@@ -95,6 +118,7 @@ const GET_LANDING_PAGE = /* GraphQL */ `
       ...course
       ...modules
       ...about
+      ...team
     }
   }
 `

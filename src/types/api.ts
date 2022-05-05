@@ -73,6 +73,27 @@ export type AboutProps = {
   cardPlans: CardsListProps[]
 }
 
+export type SocialNetwork = {
+  id: number
+  url: string
+  socialNetwork: string
+}
+export type AuthorProps = {
+  id: number
+  photo: {
+    alternativeText: string
+    url: string
+  }
+  fullName: string
+  role: string
+  description: string
+  socialNetworks: SocialNetwork[]
+}
+export type TeamProps = {
+  title: string
+  authors: AuthorProps[]
+}
+
 export type LandingPageProps = {
   logo: LogoProps
   header: HeaderProps
@@ -81,4 +102,5 @@ export type LandingPageProps = {
   sectionCourse: CourseProps
   sectionModule: ModulesProps
   sectionAbout: AboutProps
+  sectionTeam: TeamProps
 }

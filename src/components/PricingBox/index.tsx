@@ -22,7 +22,7 @@ const PricingBox = ({ cardPlans }: AboutProps) => (
         ButtonText,
         ButtonUrl
       }) => (
-        <S.Box key={id}>
+        <S.Box key={`${id}`}>
           <S.Prices>
             <S.FullPrice>
               De <span>R${fullPrice}</span> por apenas

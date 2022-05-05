@@ -4,6 +4,7 @@ import { GrGithub } from 'react-icons/gr'
 import { FaDribbble, FaTwitter } from 'react-icons/fa'
 
 import * as S from './styles'
+import { getImageUrl } from 'utils/getImageUrl'
 
 const icons = {
   twitter: <FaTwitter />,
@@ -12,45 +13,39 @@ const icons = {
 }
 
 type socialLinks = {
-  slug: string
-  link: string
+  socialNetwork: string
+  url: string
 }
-
 type Props = {
-  name: string
+  id: number
+  fullname: string
   role: string
-  image: string
+  photo: string
   socialLinks: socialLinks[]
   description: string
 }
 
 const ProfileCard: React.FC<Props> = ({
-  name,
+  id,
+  fullname,
   role,
-  image,
+  photo,
   socialLinks,
   description
 }) => (
-  <S.Card key={name}>
+  <S.Card key={`${id}`}>
     <S.Image>
-      <source
-        srcSet={require(`@images/authors/${image}?webp`)}
-        type="image/webp"
-      />
-      <source srcSet={require(`@images/authors/${image}`)} type="image/png" />
-      <img
-        src={require(`@images/authors/${image}`)}
-        loading="lazy"
-        alt={name}
-      />
+      <source srcSet={getImageUrl(`${photo}?webp`)} type="image/webp" />
+      <source srcSet={getImageUrl(`${photo}`)} type="image/png" />
+      <img src={getImageUrl(`${photo}`)} loading="lazy" alt={fullname} />
     </S.Image>
-    <S.Name>{name}</S.Name>
+    <S.Name>{fullname}</S.Name>
     <S.Role>{role}</S.Role>
     <S.SocialLinks>
       {socialLinks.map((item) => (
-        <S.Link key={item.link}>
-          <a href={item.link} title={item.slug}>
-            {icons[item.slug]}
+        <S.Link key={item.url}>
+          <a href={item.url} title={item.url}>
+            {icons[item.socialNetwork]}
           </a>
         </S.Link>
       ))}

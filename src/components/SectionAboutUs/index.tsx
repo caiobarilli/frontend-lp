@@ -4,24 +4,26 @@ import Heading from 'components/Heading'
 import Container from 'components/Container'
 import ProfileCard from 'components/ProfileCard'
 
-import content from './content'
 import * as S from './styles'
+import { TeamProps } from 'types/api'
 
-const SectionAboutUs = () => (
+const SectionAboutUs = ({ title, authors }: TeamProps) => (
   <Container>
-    <Heading reverseColor>Quem somos nós?</Heading>
-
+    <Heading reverseColor>{title}</Heading>
     <S.Content>
-      {content.map((profile) => (
-        <ProfileCard
-          key={profile.name}
-          name={profile.name}
-          role={profile.role}
-          image={profile.image}
-          socialLinks={profile.socialLinks}
-          description={profile.description}
-        />
-      ))}
+      {authors.map(
+        ({ id, fullName, role, photo, socialNetworks, description }) => (
+          <ProfileCard
+            key={id}
+            id={id}
+            fullname={fullName}
+            role={role}
+            photo={photo.url}
+            socialLinks={socialNetworks}
+            description={description}
+          />
+        )
+      )}
     </S.Content>
   </Container>
 )
