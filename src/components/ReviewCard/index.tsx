@@ -43,27 +43,7 @@ const ReviewCard: React.FC<Props> = ({ id, fullname, photo, description }) => {
               />
             </>
           ) : (
-            <>
-              <source
-                srcSet={getImageUrl(
-                  `/uploads/thumbnail_reviewer_17f000c1cd_cc817e5369.jpeg?webp`
-                )}
-                type="image/webp"
-              />
-              <source
-                srcSet={getImageUrl(
-                  `/uploads/thumbnail_reviewer_17f000c1cd_cc817e5369.jpeg`
-                )}
-                type="image/jpg"
-              />
-              <img
-                src={getImageUrl(
-                  `/uploads/thumbnail_reviewer_17f000c1cd_cc817e5369.jpeg`
-                )}
-                loading="lazy"
-                alt={fullname}
-              />
-            </>
+            <></>
           )}
         </S.Image>
         <S.Name>{fullname}</S.Name>
